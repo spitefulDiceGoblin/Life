@@ -22,3 +22,4 @@ Conway's Game of Life - project for Mobile application 1
   - [ ] Database with Room
   - [ ] Dependency Injection
   - [ ] Lifecycle-Aware Components
+  - [ ] Notifications
