@@ -3,8 +3,8 @@ Conway's Game of Life - project for Mobile application 1
 
 ## Stats
 
-- Activities: 1
-- Fragments: 0
+- Activities: 2
+- Fragments: 3
 - Font: -
 - Languages: 
   - [ ] English

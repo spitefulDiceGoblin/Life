@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation">
+
+    <fragment
+        android:id="@+id/nav_game"
+        android:name="com.example.life.ui.game.GameFragment"
+        android:label="game_fragment"
+        tools:layout="@layout/game_fragment" >
+        <action
+            android:id="@+id/action_to_game_settings"
+            app:destination="@id/nav_game_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_game_settings"
+        android:name="com.example.life.ui.game.GameSettingsFragment"
+        android:label="game_settings_fragment" />
+    <fragment
+        android:id="@+id/nav_wiki"
+        android:name="com.example.life.ui.wiki.WikiFragment"
+        android:label="wiki_fragment"
+        tools:layout="@layout/wiki_fragment" />
+</navigation>
