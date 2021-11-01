@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
-    <TextView
+    <com.example.life.custom.ConwayView
+        android:id="@+id/conwayView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
