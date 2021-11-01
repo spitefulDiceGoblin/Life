@@ -17,4 +17,18 @@ class ConwayArray {
     constructor(array: Array<Array<Boolean>>) {
         cells = array
     }
+
+    // TODO: get value for x - y cell
+
+    fun changeState(x: Int, y: Int) {
+        cells[x][y] = !cells[x][y]
+    }
+
+    fun setToAlive(x: Int, y: Int) {
+        cells[x][y] = true
+    }
+
+    fun setToDead(x: Int, y: Int) {
+        cells[x][y] = false
+    }
 }

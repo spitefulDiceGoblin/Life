@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
-    <com.example.life.custom.ConwayView
+    <com.example.life.custom.EditableConwayView
         android:id="@+id/conwayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
