@@ -4,17 +4,19 @@ import android.content.Context
 import android.graphics.*
 import android.os.Build
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.withStyledAttributes
 import com.example.life.ConwayArray
-import kotlin.math.absoluteValue
-import kotlin.math.floor
+import com.example.life.R
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import kotlin.math.min
 
 /**
  * TODO: document your custom view class.
  */
-class ShiftingConwayView @JvmOverloads constructor(
+class FullConwayView @JvmOverloads constructor(
+    // array: Array<BooleanArray>?,
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -36,6 +38,16 @@ class ShiftingConwayView @JvmOverloads constructor(
     private val paint = Paint()
 
     init {
+        // if (array != null) cells.cells = array
+
+        context.withStyledAttributes(attrs, R.styleable.ConwayView) {
+            val stringThing = getString(R.styleable.ConwayView_serializedArray)
+
+            if (stringThing != null && stringThing.length > 10) {
+                cells.cells = Json.decodeFromString(stringThing)
+            }
+        }
+
         isClickable = true
     }
 

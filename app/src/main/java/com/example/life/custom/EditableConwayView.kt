@@ -6,7 +6,11 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.withStyledAttributes
 import com.example.life.ConwayArray
+import com.example.life.R
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import kotlin.math.absoluteValue
 import kotlin.math.floor
 
@@ -17,6 +21,7 @@ import kotlin.math.floor
  * TODO: document your custom view class.
  */
 class EditableConwayView @JvmOverloads constructor(
+    // array: Array<BooleanArray>?,
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -43,14 +48,26 @@ class EditableConwayView @JvmOverloads constructor(
     // Can be implemented better
     // TODO move hardcoded values to resource file
     private var cellSize: Float = 80f
-    private var lineSize : Float = 5f
+    private val lineSize get() = cellSize / 16
     private val blockSize get() = cellSize - (3* lineSize)
+
+    private lateinit var array: Array<BooleanArray>
 
     // no anti-alias
     //private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
     private val paint = Paint()
 
     init {
+        //if (array != null) cells.cells = array
+
+        context.withStyledAttributes(attrs, R.styleable.ConwayView) {
+            val stringThing = getString(R.styleable.ConwayView_serializedArray)
+
+            if (stringThing != null && stringThing.length > 10) {
+                cells.cells = Json.decodeFromString(stringThing)
+            }
+        }
+
         isClickable = true
 
         currentDrawingX = 128 * blockSize

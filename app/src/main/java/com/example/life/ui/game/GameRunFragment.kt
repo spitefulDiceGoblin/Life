@@ -6,7 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.life.R
-import com.example.life.custom.ShiftingConwayView
+import com.example.life.custom.FullConwayView
 
 // TODO fix hamburger menu not showing
 class GameRunFragment : Fragment() {
@@ -24,7 +24,7 @@ class GameRunFragment : Fragment() {
         setHasOptionsMenu(true)
 
         val view: View? =  inflater.inflate(R.layout.game_run_fragment, container, false)
-        val game: ShiftingConwayView = view!!.findViewById(R.id.conwayView)
+        val game: FullConwayView = view!!.findViewById(R.id.conwayView)
 
         game.setOnClickListener{ view -> findNavController().navigate(R.id.action_game_run_to_edit)}
 

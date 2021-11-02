@@ -1,20 +1,17 @@
 package com.example.life
 
+// TODO Move logic to viewmodels
 class ConwayArray {
-    var cells = arrayOf<Array<Boolean>>()
+    var cells = arrayOf<BooleanArray>()
 
     constructor() {
         // TODO: initialize 2D array with sizes?
         for (i in 0..255) {
-            var array = arrayOf<Boolean>()
-            for (j in 0..255) {
-                array += false
-            }
-            cells += array
+            cells += BooleanArray(256)
         }
     }
 
-    constructor(array: Array<Array<Boolean>>) {
+    constructor(array: Array<BooleanArray>) {
         cells = array
     }
 

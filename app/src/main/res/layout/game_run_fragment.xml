@@ -13,7 +13,7 @@
          TODO: add data (alive cells, dead cells, ticks, ...
          -->
 
-        <com.example.life.custom.ShiftingConwayView
+        <com.example.life.custom.FullConwayView
             android:id="@+id/conwayView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
