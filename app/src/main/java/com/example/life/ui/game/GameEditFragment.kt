@@ -6,12 +6,11 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.life.R
+import com.example.life.databinding.GameEditFragmentBinding
 
 class GameEditFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = GameEditFragment()
-    }
+    private lateinit var binding: GameEditFragmentBinding
 
     private lateinit var viewModel: GameEditViewModel
 
@@ -20,7 +19,17 @@ class GameEditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.game_edit_fragment, container, false)
+
+        val view = inflater.inflate(R.layout.game_edit_fragment, container, false)
+
+        viewModel = ViewModelProvider(this).get(GameEditViewModel::class.java)
+        binding = GameEditFragmentBinding.bind(view).apply {
+            this.viewmodel = viewModel
+        }
+
+        binding.lifecycleOwner = this.viewLifecycleOwner
+
+        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -36,11 +45,5 @@ class GameEditFragment : Fragment() {
             }
             else -> false
         }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GameEditViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

@@ -6,14 +6,12 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.life.R
-import com.example.life.custom.FullConwayView
+import com.example.life.databinding.GameRunFragmentBinding
 
 // TODO fix hamburger menu not showing
 class GameRunFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = GameRunFragment()
-    }
+    private lateinit var binding: GameRunFragmentBinding
 
     private lateinit var viewModel: GameRunViewModel
 
@@ -23,10 +21,15 @@ class GameRunFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
 
-        val view: View? =  inflater.inflate(R.layout.game_run_fragment, container, false)
-        val game: FullConwayView = view!!.findViewById(R.id.conwayView)
+        val view =  inflater.inflate(R.layout.game_run_fragment, container, false)
 
-        game.setOnClickListener{ view -> findNavController().navigate(R.id.action_game_run_to_edit)}
+        viewModel = ViewModelProvider(this).get(GameRunViewModel::class.java)
+        binding = GameRunFragmentBinding.bind(view).apply {
+            this.viewmodel = viewModel
+        }
+
+        binding.conwayView.setOnClickListener{
+            findNavController().navigate(R.id.action_game_run_to_edit)}
 
         return view
     }
@@ -44,11 +47,4 @@ class GameRunFragment : Fragment() {
             }
             else -> false
         }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GameRunViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }
