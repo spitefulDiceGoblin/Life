@@ -49,7 +49,7 @@ class ContentActivity : AppCompatActivity() {
         val inflater = navController.navInflater
         val graph = inflater.inflate(R.navigation.mobile_navigation)
         val destination = if (intent.getBooleanExtra(IS_DEST_GAME, true))
-            R.id.nav_game else R.id.nav_wiki
+            R.id.nav_game_run else R.id.nav_wiki
         graph.startDestination = destination
         navController.graph = graph
 
@@ -60,7 +60,7 @@ class ContentActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_game, R.id.nav_wiki
+                R.id.nav_game_edit, R.id.nav_wiki
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

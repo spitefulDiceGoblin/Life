@@ -57,10 +57,6 @@ class EditableConwayView @JvmOverloads constructor(
         currentDrawingY = 128 * blockSize
     }
 
-    // Niets aan te passen
-    //override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
-    //}
-
     // https://stackoverflow.com/questions/19458094/canvas-zooming-in-shifting-and-scaling-on-android
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)

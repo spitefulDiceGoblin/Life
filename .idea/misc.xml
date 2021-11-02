@@ -17,7 +17,9 @@
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/fragment_gallery.xml" value="0.2418478260869565" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/fragment_home.xml" value="0.2418478260869565" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/fragment_slideshow.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/game_edit_fragment.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/game_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/game_run_fragment.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/nav_header.xml" value="0.15364583333333334" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/sample_conway_view.xml" value="0.11676798378926039" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/layout/settings_activity.xml" value="0.23278985507246377" />
@@ -25,6 +27,7 @@
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/menu/activity_game_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/menu/activity_wiki_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/menu/content.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/menu/game_overflow.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/menu/wiki.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kaat/Documents/Vives/KotlinStuffs/Life/app/src/main/res/xml/root_preferences.xml" value="0.4" />
       </map>

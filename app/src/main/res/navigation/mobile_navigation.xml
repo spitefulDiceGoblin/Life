@@ -2,17 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_game_run">
 
-    <fragment
-        android:id="@+id/nav_game"
-        android:name="com.example.life.ui.game.GameFragment"
-        android:label="game_fragment"
-        tools:layout="@layout/game_fragment" >
-        <action
-            android:id="@+id/action_to_game_settings"
-            app:destination="@id/nav_game_settings" />
-    </fragment>
     <fragment
         android:id="@+id/nav_game_settings"
         android:name="com.example.life.ui.game.GameSettingsFragment"
@@ -22,4 +14,25 @@
         android:name="com.example.life.ui.wiki.WikiFragment"
         android:label="wiki_fragment"
         tools:layout="@layout/wiki_fragment" />
+    <fragment
+        android:id="@+id/nav_game_run"
+        android:name="com.example.life.ui.game.GameRunFragment"
+        android:label="game_run_fragment"
+        tools:layout="@layout/game_run_fragment">
+        <action
+            android:id="@+id/action_game_run_to_edit"
+            app:destination="@id/nav_game_edit" />
+        <action
+            android:id="@+id/action_game_run_to_settings"
+            app:destination="@id/nav_game_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_game_edit"
+        android:name="com.example.life.ui.game.GameEditFragment"
+        android:label="game_edit_fragment"
+        tools:layout="@layout/game_edit_fragment">
+        <action
+            android:id="@+id/action_game_edit_to_settings"
+            app:destination="@id/nav_game_settings" />
+    </fragment>
 </navigation>

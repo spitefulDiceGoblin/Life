@@ -7,20 +7,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.life.R
 
-class GameFragment : Fragment() {
+class GameEditFragment : Fragment() {
 
     companion object {
-        fun newInstance() = GameFragment()
+        fun newInstance() = GameEditFragment()
     }
 
-    private lateinit var viewModel: GameViewModel
+    private lateinit var viewModel: GameEditViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.game_fragment, container, false)
+        return inflater.inflate(R.layout.game_edit_fragment, container, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -39,7 +39,7 @@ class GameFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(GameEditViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
