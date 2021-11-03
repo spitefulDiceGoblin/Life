@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_game">Spelen</string>
+    <string name="menu_wiki">Meer uitleg</string>
+    <string name="menu_settings">Instellingen - defect</string>
+    <string name="menu_about">Over</string>
+    <string name="action_clear">Leegmaken</string>
+    <string name="game_edit_fragment">Cellen aan/uitzetten</string>
+    <string name="title_activity_content">Inhoudsactiviteit</string>
+    <string name="navigation_drawer_open">Open lade</string>
+    <string name="navigation_drawer_close">Sluit lade</string>
+    <string name="nav_header_desc">Kopstuk navigatie</string>
+    <string name="start_image_description">Afbeelding van Game of Life</string>
+    <string name="wiki_link">https://nl.wikipedia.org/wiki/Game_of_Life</string>
+    <string name="preference_menu_edits">Cellmenu</string>
+    <string name="isScrollingCounter">Scroll tegen de richting</string>
+    <string name="nav_header_subtitle">Persoonlijk project voor Mobile Application 1</string>
+    <string name="game_subtitle">Maar toch niet helemaal, want 2D arrays zijn complexe dingen</string>
+    <string name="alive_cells">Levende cellen</string>
+    <string name="ticks_since_start">Tellen tot nu toe</string>
+    <string name="youtube_link">"Bekijk het in actie "</string>
+    <string name="about_text">Een poging tot het recreëren van John Conway\'s cellulaire automaat. Het doet iets?</string>
+</resources>

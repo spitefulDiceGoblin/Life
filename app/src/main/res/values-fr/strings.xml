@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_game">Jouer</string>
+    <string name="menu_wiki">Plus d\'informations</string>
+    <string name="menu_settings">Paramètres - non-fonctionel</string>
+    <string name="menu_about">A propos de cette appli</string>
+    <string name="action_clear">Vider</string>
+    <string name="game_edit_fragment">Alterner les cellules</string>
+    <string name="title_activity_content">Activité avec le conteny</string>
+    <string name="navigation_drawer_open">Ouvrir le tiroir</string>
+    <string name="navigation_drawer_close">Fermer le tiroir</string>
+    <string name="nav_header_desc">en-tête navigation</string>
+    <string name="start_image_description">image du Jeu de la Vie</string>
+    <string name="wiki_link">https://fr.wikipedia.org/wiki/Jeu_de_la_vie</string>
+    <string name="preference_menu_edits">Menu des cellules</string>
+    <string name="isScrollingCounter">Direction contraire</string>
+    <string name="nav_header_subtitle">Projet personel pour Mobila Application 1</string>
+    <string name="game_subtitle">Raté et échoué à cause des arrays 2D</string>
+    <string name="alive_cells">Cellules vivantes</string>
+    <string name="ticks_since_start">Comptes passées</string>
+    <string name="youtube_link">Voir le Jeu de la Vie en action</string>
+    <string name="about_text">Une attente à l\'implementation de la Jeu de la Vie, pas entièrement succédé</string>
+</resources>

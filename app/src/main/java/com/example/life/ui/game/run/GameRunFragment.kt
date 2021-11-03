@@ -1,4 +1,4 @@
-package com.example.life.ui.game
+package com.example.life.ui.game.run
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,19 +10,17 @@ import com.example.life.R
 import com.example.life.databinding.GameRunFragmentBinding
 import java.util.*
 
-// TODO fix hamburger menu not showing
 class GameRunFragment : Fragment() {
 
     private lateinit var binding: GameRunFragmentBinding
     private lateinit var viewModel: GameRunViewModel
-    private lateinit var timer: Timer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         setHasOptionsMenu(true)
-        timer = Timer(true)
 
         val view =  inflater.inflate(R.layout.game_run_fragment, container, false)
 
@@ -38,6 +36,10 @@ class GameRunFragment : Fragment() {
 
         viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
             if (refresh) binding.conwayView.liveLife()
+        })
+
+        ConwayArray.aliveCells.observe(viewLifecycleOwner, {
+            viewModel.updateAlive()
         })
 
         return view
@@ -62,6 +64,10 @@ class GameRunFragment : Fragment() {
         when (item.itemId) {
             R.id.game_settings_fragment -> {
                 findNavController().navigate(R.id.nav_game_settings)
+                true
+            }
+            R.id.action_clear -> {
+                binding.conwayView.clear()
                 true
             }
             else -> false

@@ -1,36 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.example.life.ui.game.GameRunViewModel" />
+            type="com.example.life.ui.game.run.GameRunViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".ui.game.GameRunFragment"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.game.run.GameRunFragment">
 
-        <!--
-         TODO: add data (alive cells, dead cells, ticks, ...
-         -->
-
-        <com.example.life.custom.FullConwayView
-            android:id="@+id/conwayView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.example.life.custom.FullConwayView
+                android:id="@+id/conwayView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider1"
+            style="@style/divider" />
+
+        <TextView
+            android:id="@+id/cellCountText"
+            style="@style/standard_text"
+            android:text="@string/alive_cells"/>
+
+        <TextView
+            android:id="@+id/CellCountVar"
+            style="@style/standard_text"
+            android:text="@={viewmodel.aliveCellsAsString}" />
+
+        <View
+            android:id="@+id/divider2"
+            style="@style/divider" />
+
+        <TextView
+            android:id="@+id/cellTickText"
+            style="@style/standard_text"
+            android:text="@string/ticks_since_start"/>
+
+        <TextView
+            android:id="@+id/CellTickVar"
+            style="@style/standard_text"
+            android:text="@={viewmodel.ticksAsString}" />
+
+    </LinearLayout>
 
 </layout>

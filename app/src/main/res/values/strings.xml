@@ -1,32 +1,35 @@
 <resources>
-    <string name="app_name">Conway\'s Game of Life</string>
-    <string name="title_activity_content">ContentActivity</string>
+    <!-- Titles/Menu items -->
+    <string name="app_name" translatable="false">Conway\'s Game of Life</string>
+    <string name="menu_game">Play</string>
+    <string name="menu_wiki">More information</string>
+    <string name="menu_settings">Settings - not implemented</string>
+    <string name="menu_about">About</string>
+    <string name="action_clear">Clear</string>
+    <string name="game_edit_fragment">Toggle cells</string>
+
+    <!-- Content descriptions -->
+    <string name="title_activity_content">Content Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Conway\'s Game of Life</string>
-    <string name="nav_header_subtitle">Personal project for Mobile Application 1</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="start_image_description">Game of Life pattern image</string>
 
-    <string name="button_to_game">Start playing</string>
-    <string name="button_to_wiki">More info</string>
+    <!-- sources -->
+    <string name="wiki_link">https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life</string>
 
-    <string name="menu_game">Play Conway\'s Game of Life</string>
-    <string name="menu_wiki">More information</string>
-    <string name="menu_settings">Game settings</string>
+    <!-- preferences menu (still to implement) -->
+    <string name="preference_menu_edits">Toggle menu</string>
+    <string name="isScrollingCounter">Scroll counter to direction</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- Text contents -->
+    <string name="nav_header_subtitle">Personal project for Mobile Application 1</string>
+    <string name="game_subtitle">But not really because 2D arrays don\'t respect deadlines</string>
+    <string name="alive_cells">Alive cells</string>
+    <string name="ticks_since_start">Ticks since start</string>
+    <string name="youtube_link">See in action</string>
+    <string name="about_subtitle" translatable="false">LIFE is what happens when you\'re busy making other plans</string>
+    <string name="about_title" translatable="false">Kaatway\'s Game of Life</string>
+    <string name="about_text">Attempt at recreating Conway\'s cellular automaton. It\'s doing something?</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in sapien commodo magna vehicula ornare. Praesent efficitur, ligula id vestibulum dictum, tortor sapien pretium elit, vel tincidunt arcu tortor eu magna. Donec accumsan venenatis odio, in pellentesque tellus interdum vel. Pellentesque nec consectetur orci. In ultrices nunc vel est euismod consectetur. Donec eleifend dui sit amet urna fringilla venenatis. Cras egestas lorem vitae dui efficitur scelerisque. Quisque ornare aliquet vulputate. Donec nec mauris risus. In fermentum ut dolor id eleifend. Nunc placerat ligula a orci iaculis, non accumsan mauris luctus. Suspendisse sodales commodo scelerisque. Nulla consequat quam id sollicitudin aliquam. Maecenas sed enim eget lorem dapibus semper. In eget enim accumsan, auctor velit eget, aliquam sapien. Nulla quis purus imperdiet, convallis justo eget, fringilla arcu. Pellentesque at nisl at augue malesuada facilisis. Cras ac mi nibh. Mauris dapibus porta nulla sed viverra. Phasellus in dui id libero commodo laoreet. Curabitur at sapien feugiat, blandit odio at, aliquet nibh. Curabitur vehicula et sapien nec venenatis. Duis auctor luctus felis, non pulvinar quam placerat nec. Nam a dolor eget sem auctor consectetur a sed arcu. Vestibulum nunc erat, eleifend dapibus mattis eu, dapibus ac erat. Sed elementum id ipsum ut dignissim. Phasellus tempor, leo at aliquet sodales, massa lectus tempus ipsum, non posuere nisl ante sit amet nunc. Nullam suscipit sit amet sapien mollis facilisis. Aliquam erat volutpat. Donec lacus velit, maximus id rhoncus vitae, hendrerit non turpis. Curabitur hendrerit pretium enim, vitae bibendum turpis. Donec et lobortis erat. Nulla tristique diam vitae odio pulvinar gravida. Donec justo velit, porttitor at nisi sit amet, efficitur finibus leo. Phasellus luctus, metus in ullamcorper dapibus, massa mauris lobortis neque, id pretium sem eros nec ipsum. Donec egestas in purus sed rutrum. Mauris fermentum nulla at sapien ullamcorper porta. Pellentesque euismod bibendum dui vitae suscipit. Donec varius justo enim, et vulputate augue tempus at. Aenean at finibus dui. Vivamus rutrum ultricies eleifend. Donec maximus erat pellentesque metus condimentum convallis. Sed consectetur quam nec odio congue, commodo viverra libero vestibulum. Sed convallis ligula odio, nec rutrum justo molestie id. Vivamus sit amet nisi eget neque fringilla facilisis. Vestibulum fermentum dolor ut imperdiet posuere. Sed congue libero auctor sollicitudin venenatis. Aliquam aliquet vestibulum lectus, eleifend iaculis nunc sagittis non. Vivamus egestas efficitur consequat. Nulla et finibus est. Duis congue fermentum bibendum. Sed risus est, pulvinar in dignissim quis, vulputate quis tortor. Aenean lacinia laoreet ligula, non pretium odio pellentesque at. Pellentesque ligula tellus, finibus sagittis suscipit eget, viverra quis nisl. Morbi porta dui sagittis sem sodales, in aliquam ex fermentum. Cras nec dictum justo, id viverra nisi. Suspendisse at ante nulla. Donec placerat nec ante in elementum. Nam id porta leo. Suspendisse consectetur suscipit lorem, at rhoncus odio ultricies eu. Morbi ac neque nibh. Ut eget tortor massa.</string>
 </resources>

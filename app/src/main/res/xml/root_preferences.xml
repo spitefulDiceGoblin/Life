@@ -1,39 +1,10 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--
-TODO: scale for edit fragment, shift preferences, scroll sensitivity
-TODO: implement color picker
-https://github.com/martin-stone/hsv-alpha-color-picker-androidhttps://github.com/martin-stone/hsv-alpha-color-picker-android
--->
-    <PreferenceCategory app:title="@string/messages_header">
-
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/sync_header">
-
+<!--TODO: scale, scroll sensitivity, ticker speed, ... -->
+    <PreferenceCategory app:title="@string/preference_menu_edits">
+        <!--TODO: bind to scroll direction, ... -->
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
+            app:key="SCROLLING_COUNTER"
+            app:title="@string/isScrollingCounter"
+            app:defaultValue="false"/>
     </PreferenceCategory>
-
 </PreferenceScreen>

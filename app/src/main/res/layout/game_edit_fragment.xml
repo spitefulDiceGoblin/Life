@@ -6,12 +6,12 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.example.life.ui.game.GameEditViewModel" />
+            type="com.example.life.ui.game.edit.GameEditViewModel" />
     </data>
 
     <FrameLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.game.GameEditFragment">
+        tools:context=".ui.game.edit.GameEditFragment">
 
         <com.example.life.custom.EditableConwayView
             android:id="@+id/conwayView"

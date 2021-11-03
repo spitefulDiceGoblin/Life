@@ -1,33 +1,36 @@
-package com.example.life.ui.game
+package com.example.life.ui.game.run
 
-import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.life.ConwayArray
-import com.example.life.util.Direction
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.util.*
 
-class GameRunViewModel() : ViewModel() {
-    val refresh = MutableLiveData<Boolean>()
+class GameRunViewModel : ViewModel() {
 
-    lateinit var handler: Handler
-    var task =  object : Runnable {
+    private var ticks = 0
+    private lateinit var handler: Handler
+
+    private var task =  object : Runnable {
         override fun run() {
             refresh.value = true
+            ticks++
+            ticksAsString.value = ticks.toString()
             handler.postDelayed(this, 1000)
         }
     }
 
+    val refresh = MutableLiveData<Boolean>()
+    val aliveCellsAsString = MutableLiveData<String>()
+    val ticksAsString = MutableLiveData<String>()
+
     init {
         refresh.value = false
         handler = Handler(Looper.getMainLooper())
+    }
+
+    fun updateAlive() {
+        aliveCellsAsString.value = ConwayArray.aliveCells.value.toString()
     }
 
     // TODO replace time with value from preferences

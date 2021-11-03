@@ -1,10 +1,13 @@
-package com.example.life.ui.game
+package com.example.life.ui.game.edit
 
+import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.example.life.R
 import com.example.life.databinding.GameEditFragmentBinding
 
@@ -27,7 +30,13 @@ class GameEditFragment : Fragment() {
             this.viewmodel = viewModel
         }
 
-        binding.lifecycleOwner = this.viewLifecycleOwner
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        val listener = OnSharedPreferenceChangeListener { preference, key ->
+            binding.conwayView.isScrollingCounter = preferences.getBoolean("SCROLLING_COUNTER", true)
+        }
+
+        preferences.registerOnSharedPreferenceChangeListener(listener)
 
         return view
     }
@@ -41,6 +50,10 @@ class GameEditFragment : Fragment() {
         when (item.itemId) {
             R.id.game_settings_fragment -> {
                 findNavController().navigate(R.id.nav_game_settings)
+                true
+            }
+            R.id.action_clear -> {
+                binding.conwayView.clear()
                 true
             }
             else -> false

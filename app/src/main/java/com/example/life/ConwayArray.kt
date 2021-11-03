@@ -13,7 +13,8 @@ object ConwayArray {
     private val _cells = MutableLiveData<Array<BooleanArray>>()
     val cells: LiveData<Array<BooleanArray>> get() = _cells
 
-    val toRefresh = MutableLiveData<Boolean>()
+    private val _aliveCells = MutableLiveData<Int>()
+    val aliveCells: LiveData<Int> get() = _aliveCells
 
 
     private var handler = Handler(Looper.getMainLooper())
@@ -63,6 +64,13 @@ object ConwayArray {
             }
         }
 
+        var alive = 0
+
+        for (row in cellArray) {
+            alive += row.count { it }
+        }
+
+        _aliveCells.value = alive
         _cells.value = cellArray
     }
 
@@ -104,5 +112,4 @@ object ConwayArray {
             }
         }
     }
-
 }

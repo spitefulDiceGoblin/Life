@@ -8,16 +8,20 @@
     <fragment
         android:id="@+id/nav_game_settings"
         android:name="com.example.life.ui.game.GameSettingsFragment"
-        android:label="game_settings_fragment" />
+        android:label="@string/menu_settings" />
     <fragment
         android:id="@+id/nav_wiki"
         android:name="com.example.life.ui.wiki.WikiFragment"
-        android:label="wiki_fragment"
-        tools:layout="@layout/wiki_fragment" />
+        android:label="@string/menu_wiki"
+        tools:layout="@layout/wiki_fragment" >
+        <action
+            android:id="@+id/action_wiki_to_about"
+            app:destination="@id/nav_about" />
+    </fragment>
     <fragment
         android:id="@+id/nav_game_run"
-        android:name="com.example.life.ui.game.GameRunFragment"
-        android:label="game_run_fragment"
+        android:name="com.example.life.ui.game.run.GameRunFragment"
+        android:label="@string/menu_game"
         tools:layout="@layout/game_run_fragment">
         <action
             android:id="@+id/action_game_run_to_edit"
@@ -28,11 +32,16 @@
     </fragment>
     <fragment
         android:id="@+id/nav_game_edit"
-        android:name="com.example.life.ui.game.GameEditFragment"
-        android:label="game_edit_fragment"
+        android:name="com.example.life.ui.game.edit.GameEditFragment"
+        android:label="@string/game_edit_fragment"
         tools:layout="@layout/game_edit_fragment">
         <action
             android:id="@+id/action_game_edit_to_settings"
             app:destination="@id/nav_game_settings" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.life.ui.wiki.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/about_fragment" />
 </navigation>
