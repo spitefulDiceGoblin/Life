@@ -16,13 +16,12 @@ import kotlin.math.absoluteValue
 import kotlin.math.floor
 import kotlin.math.min
 
-// TODO move hardcoded values to resource file
 class EditableConwayView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    var isScrollingCounter = true
+    var isScrollingCounter = false
 
     // contains array
     private lateinit var cells: Array<BooleanArray>
@@ -155,18 +154,16 @@ class EditableConwayView @JvmOverloads constructor(
                 endShiftY = yPosition
             }
             MotionEvent.ACTION_MOVE -> {
-                // TODO don't scroll further than edges
+                endShiftX = (startShiftX - xPosition) * 2
+                endShiftY = (startShiftY - yPosition) * 2
 
                 if (isScrollingCounter) {
-                    endShiftX = (xPosition - startShiftX) * 2
-                    endShiftY = (yPosition - startShiftY) * 2
+                    currentDrawingX = lastDrawingX + endShiftX
+                    currentDrawingY = lastDrawingY + endShiftY
                 } else {
-                    endShiftX = (startShiftX - xPosition) * 2
-                    endShiftY = (startShiftY - yPosition) * 2
+                    currentDrawingX = lastDrawingX - endShiftX
+                    currentDrawingY = lastDrawingY - endShiftY
                 }
-
-                currentDrawingX = lastDrawingX + endShiftX
-                currentDrawingY = lastDrawingY + endShiftY
 
                 currentDrawingX = max(currentDrawingX, 0f)
                 currentDrawingY = max(currentDrawingY, 0f)
