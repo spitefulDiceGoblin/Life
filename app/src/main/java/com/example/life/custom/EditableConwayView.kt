@@ -59,8 +59,8 @@ class EditableConwayView @JvmOverloads constructor(
     init {
         isClickable = true
 
-        currentDrawingX = 128 * blockSize
-        currentDrawingY = 128 * blockSize
+        currentDrawingX = cellSize // 128 * blockSize
+        currentDrawingY = cellSize // 128 * blockSize
     }
 
     // https://stackoverflow.com/questions/19458094/canvas-zooming-in-shifting-and-scaling-on-android

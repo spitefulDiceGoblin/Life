@@ -17,73 +17,25 @@ import java.util.*
 class GameRunViewModel() : ViewModel() {
     val refresh = MutableLiveData<Boolean>()
 
-    private val timer: Timer
+    lateinit var handler: Handler
+    var task =  object : Runnable {
+        override fun run() {
+            refresh.value = true
+            handler.postDelayed(this, 1000)
+        }
+    }
 
     init {
         refresh.value = false
-
-        timer = Timer(true)
-
-
-        //timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
-        //
-        //    override fun onTick(millisUntilFinished: Long) {
-        //        _currentTime.value = millisUntilFinished/ONE_SECOND
-        //    }
-        //
-        //    override fun onFinish() {
-        //        _currentTime.value = DONE
-        //        onGameFinish()
-        //    }
-        //}
+        handler = Handler(Looper.getMainLooper())
     }
 
     // TODO replace time with value from preferences
     fun startTimer() {
-        timer.scheduleAtFixedRate(
-            object : TimerTask() {
-                override fun run() {
-                    test()
-                }
-
-            },0, 1000
-        )
+        handler.post(task)
     }
 
     fun stopTimer() {
-        timer.cancel()
-        timer.purge()
+        handler.removeCallbacks(task)
     }
-
-    private fun test() {
-        ConwayArray.toRefresh.value = true
-    }
-
-    /*
-    // TODO check out looper?
-    val handler = Handler()
-
-    fun onTick() {
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                liveLife()
-                handler.postDelayed(this, 1000)//1 sec delay
-            }
-        }, 0)
-    }
-
-    fun onTick() {
-        viewModelScope.launch {
-            ConwayArray.liveLife()
-            delay(1_000)
-        }
-
-    }
-
-    fun cancelTicks() {
-        viewModelScope.cancel()
-    }
-
-         */
-
 }

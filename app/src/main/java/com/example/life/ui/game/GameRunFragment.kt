@@ -36,9 +36,9 @@ class GameRunFragment : Fragment() {
         binding.conwayView.setOnClickListener{
             findNavController().navigate(GameRunFragmentDirections.actionGameRunToEdit())}
 
-         /* viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
-            if (refresh) binding.conwayView.invalidate()
-        }) */
+        viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
+            if (refresh) binding.conwayView.liveLife()
+        })
 
         return view
     }
@@ -50,21 +50,12 @@ class GameRunFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
-        timer.scheduleAtFixedRate(
-            object : TimerTask() {
-                override fun run() {
-                    binding.conwayView.liveLife()
-                }
-            },0, 1000
-        )
+        viewModel.startTimer()
     }
 
     override fun onPause() {
         super.onPause()
-
-        timer.cancel()
-        timer.purge()
+        viewModel.stopTimer()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =

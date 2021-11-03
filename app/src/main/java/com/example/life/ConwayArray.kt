@@ -29,6 +29,8 @@ object ConwayArray {
         _cells.value = cellArray
     }
 
+
+    // TODO: still contains errors
     fun liveLife() {
         val north = shiftArray(cellArray, Direction.NORTH)
         val east = shiftArray(cellArray, Direction.EAST)
@@ -95,7 +97,7 @@ object ConwayArray {
                     val index = newCells.indexOf(boolArray)
                     var newLine = boolArray.clone()
                     newLine = newLine.dropLast(1).toBooleanArray()
-                    newLine += false
+                    newLine = BooleanArray(1) {false} + newLine
                     newCells[index] = newLine
                 }
                 return newCells
