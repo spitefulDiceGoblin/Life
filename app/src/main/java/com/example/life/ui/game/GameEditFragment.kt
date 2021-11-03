@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.life.ConwayArray
 import com.example.life.R
 import com.example.life.databinding.GameEditFragmentBinding
 
@@ -26,8 +27,6 @@ class GameEditFragment : Fragment() {
         binding = GameEditFragmentBinding.bind(view).apply {
             this.viewmodel = viewModel
         }
-
-        binding.lifecycleOwner = this.viewLifecycleOwner
 
         return view
     }

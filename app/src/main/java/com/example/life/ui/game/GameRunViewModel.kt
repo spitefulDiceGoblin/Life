@@ -1,95 +1,78 @@
 package com.example.life.ui.game
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.life.ConwayArray
 import com.example.life.util.Direction
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GameRunViewModel() : ViewModel() {
-    private var cells : Array<BooleanArray> = Array(256) { BooleanArray(256) }
-    private var life : Array<IntArray> = Array(256) { IntArray(256) }
+    //val cellArray = ConwayArray.cells
+
+    val refresh = MutableLiveData<Boolean>()
+
+    private var handler = Handler(Looper.getMainLooper())
+    private lateinit var runnable: Runnable
+
+    init {
+        refresh.value = false
+    }
+
+    // TODO replace time with value from preferences
+    fun startTimer() {
+        // executes life
+        runnable = Runnable {
+            ConwayArray.liveLife()
+            refresh.value = true
+            // postDelayed re-adds the action to the queue of actions the Handler is cycling
+            // through. The delayMillis param tells the handler to run the runnable in
+            // 1 second (1000ms)
+            handler.postDelayed(runnable, 1000)
+        }
+
+        // This is what initially starts the timer
+        handler.postDelayed(runnable, 1000)
+
+        // Note that the Thread the handler runs on is determined by a class called Looper.
+    }
+
+    fun stopTimer() {
+        // Removes all pending posts of runnable from the handler's queue, effectively stopping the
+        // timer
+        handler.removeCallbacks(runnable)
+    }
+
+    /*
+    // TODO check out looper?
+    val handler = Handler()
+
+    fun onTick() {
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                liveLife()
+                handler.postDelayed(this, 1000)//1 sec delay
+            }
+        }, 0)
+    }
 
     fun onTick() {
         viewModelScope.launch {
-            liveLife()
+            ConwayArray.liveLife()
+            delay(1_000)
         }
+
     }
 
-    private val _cellArray = MutableLiveData<Array<BooleanArray>>()
-    val cellArray: LiveData<Array<BooleanArray>> get() = _cellArray
-
-    fun liveLife() {
-        val north = shiftArray(cells, Direction.NORTH)
-        val east = shiftArray(cells, Direction.EAST)
-        val south = shiftArray(cells, Direction.SOUTH)
-        val west = shiftArray(cells, Direction.WEST)
-
-        val northEast = shiftArray(east, Direction.NORTH)
-        val southEast = shiftArray(east, Direction.SOUTH)
-        val northWest = shiftArray(west, Direction.NORTH)
-        val southWest = shiftArray(west, Direction.SOUTH)
-
-        for (cellRow in cells.indices) {
-            for (cellColumn in cells[cellRow].indices) {
-                if (north[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (east[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (south[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (west[cellRow][cellColumn]) life[cellRow][cellColumn]++
-
-                if (northEast[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (southEast[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (northWest[cellRow][cellColumn]) life[cellRow][cellColumn]++
-                if (southWest[cellRow][cellColumn]) life[cellRow][cellColumn]++
-            }
-        }
-
-        for (cellRow in cells.indices) {
-            for (cellColumn in cells[cellRow].indices) {
-                cells[cellRow][cellColumn] = life[cellRow][cellColumn] == 3 ||
-                        (life[cellRow][cellColumn] == 4 && cells[cellRow][cellColumn])
-            }
-        }
-
-        _cellArray.value = cells
+    fun cancelTicks() {
+        viewModelScope.cancel()
     }
 
-    private fun shiftArray(array: Array<BooleanArray>, direction: Direction): Array<BooleanArray> {
-        when (direction) {
-            Direction.NORTH -> {
-                val newCells = array.clone()
-                val emptyRow = BooleanArray(256)
-                newCells.drop(1)
-                return newCells + emptyRow
-            }
-            Direction.SOUTH -> {
-                val newCells = array.clone()
-                val emptyRow = BooleanArray(256)
-                newCells.dropLast(1)
-                return Array(1){emptyRow} + newCells
-            }
-            Direction.EAST -> {
-                var newCells = arrayOf<BooleanArray>()
-                for (boolArray in newCells) {
-                    var newLine = boolArray.clone()
-                    newLine.drop(1)
-                    newLine += false
-                    newCells += newLine
-                }
-                return newCells
-            }
-            Direction.WEST -> {
-                var newCells = arrayOf<BooleanArray>()
-                for (boolArray in newCells) {
-                    var newLine = boolArray.clone()
-                    newLine.dropLast(1)
-                    newLine += false
-                    newCells += newCells
-                }
-                return newCells
-            }
-        }
-    }
+         */
 
 }

@@ -23,7 +23,8 @@ class FullConwayView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     // contains array
-    val cells: ConwayArray = ConwayArray()
+    // var cells: Array<BooleanArray> = Array(256) { BooleanArray(256) }
+    var cells = ConwayArray.cells
 
     // variables for drawing
     // created and initialized here instead of when the view is actually drawn,
@@ -38,16 +39,6 @@ class FullConwayView @JvmOverloads constructor(
     private val paint = Paint()
 
     init {
-        // if (array != null) cells.cells = array
-
-        context.withStyledAttributes(attrs, R.styleable.ConwayView) {
-            val stringThing = getString(R.styleable.ConwayView_serializedArray)
-
-            if (stringThing != null && stringThing.length > 10) {
-                cells.cells = Json.decodeFromString(stringThing)
-            }
-        }
-
         isClickable = true
     }
 
@@ -81,11 +72,11 @@ class FullConwayView @JvmOverloads constructor(
         paint.style = Paint.Style.FILL
         paint.textSize = 100f
 
-        for (cellRow in cells.cells.indices) {
-            for (cellColumn in cells.cells[cellRow].indices) {
+        for (cellRow in cells.value!!.indices) {
+            for (cellColumn in cells.value!![cellRow].indices) {
 
                 // if (cellRow % 10 == 0 && cellColumn % 10 == 0 || cells.cells[cellRow][cellColumn]) {
-                if (cells.cells[cellRow][cellColumn]) {
+                if (cells.value!![cellRow][cellColumn]) {
                     // val top = (cellColumn * cellSize) + (lineSize / 4)
                     // val left = (cellRow * cellSize) + (lineSize / 4)
 

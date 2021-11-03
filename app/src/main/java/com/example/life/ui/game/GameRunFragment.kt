@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.life.ConwayArray
 import com.example.life.R
 import com.example.life.databinding.GameRunFragmentBinding
 
@@ -28,8 +29,14 @@ class GameRunFragment : Fragment() {
             this.viewmodel = viewModel
         }
 
+        binding.lifecycleOwner = this.viewLifecycleOwner
+
         binding.conwayView.setOnClickListener{
-            findNavController().navigate(R.id.action_game_run_to_edit)}
+            findNavController().navigate(GameRunFragmentDirections.actionGameRunToEdit())}
+
+        viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
+            if (refresh) binding.conwayView.invalidate()
+        })
 
         return view
     }
@@ -37,6 +44,16 @@ class GameRunFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.game_overflow, menu)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConwayArray.startTimer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ConwayArray.stopTimer()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
