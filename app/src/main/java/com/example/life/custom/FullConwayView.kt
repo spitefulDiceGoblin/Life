@@ -59,7 +59,7 @@ class FullConwayView @JvmOverloads constructor(
     }
 
     fun clear() {
-        ConwayArray.liveLife()
+        ConwayArray.clear()
         invalidate()
     }
 
