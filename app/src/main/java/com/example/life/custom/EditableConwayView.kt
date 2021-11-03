@@ -28,8 +28,7 @@ class EditableConwayView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     // contains array
-    //var cells: Array<BooleanArray> = Array(256) { BooleanArray(256) }
-    private lateinit var cells: Array<BooleanArray>
+    val cells: ConwayArray = ConwayArray()
 
     // variables for dragging
     private var currentDrawingX = 0f
@@ -52,11 +51,23 @@ class EditableConwayView @JvmOverloads constructor(
     private val lineSize get() = cellSize / 16
     private val blockSize get() = cellSize - (3* lineSize)
 
+    private lateinit var array: Array<BooleanArray>
+
     // no anti-alias
     //private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
     private val paint = Paint()
 
     init {
+        //if (array != null) cells.cells = array
+
+        context.withStyledAttributes(attrs, R.styleable.ConwayView) {
+            val stringThing = getString(R.styleable.ConwayView_serializedArray)
+
+            if (stringThing != null && stringThing.length > 10) {
+                cells.cells = Json.decodeFromString(stringThing)
+            }
+        }
+
         isClickable = true
 
         currentDrawingX = cellSize // 128 * blockSize
@@ -66,8 +77,6 @@ class EditableConwayView @JvmOverloads constructor(
     // https://stackoverflow.com/questions/19458094/canvas-zooming-in-shifting-and-scaling-on-android
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        cells = ConwayArray.cells.value!!
 
         // draw edge
         canvas.drawColor(Color.MAGENTA)
@@ -92,7 +101,7 @@ class EditableConwayView @JvmOverloads constructor(
         var linePointsArray = floatArrayOf()
 
         // Not assuming that we have a square
-        for (i in 1 until cells!!.size) {
+        for (i in 1..cells.cells.size) {
             val lineXposition = (cellSize * i - lineSize * 1.5f) - currentDrawingY
 
             // TODO code duplication
@@ -108,7 +117,7 @@ class EditableConwayView @JvmOverloads constructor(
             // canvas.drawLine(0f, lineXposition, width.toFloat(), lineXposition, paint);
         }
 
-        for (i in 1 until cells!![0].size) {
+        for (i in 1..cells.cells[0].size) {
             val lineYposition = (cellSize * i - lineSize * 1.5f) - currentDrawingX
 
             // TODO code duplication
@@ -132,11 +141,11 @@ class EditableConwayView @JvmOverloads constructor(
         paint.style = Paint.Style.FILL
         paint.textSize = 100f
 
-        for (cellRow in cells!!.indices) {
-            for (cellColumn in cells!![cellRow].indices) {
+        for (cellRow in cells.cells.indices) {
+            for (cellColumn in cells.cells[cellRow].indices) {
 
                 // if (cellRow % 10 == 0 && cellColumn % 10 == 0 || cells.cells[cellRow][cellColumn]) {
-                if (cells!![cellRow][cellColumn]) {
+                if (cells.cells[cellRow][cellColumn]) {
                     val top = (cellColumn * cellSize) + (lineSize / 4) - currentDrawingY
                     val left = (cellRow * cellSize) + (lineSize / 4) - currentDrawingX
 
@@ -169,6 +178,8 @@ class EditableConwayView @JvmOverloads constructor(
         val xPosition = event.x
         val yPosition = event.y
 
+        // TODO clickevent
+        // Geen ingebouwde click dus tussen deze events plakken
         when (action) {
             MotionEvent.ACTION_DOWN -> {
                 lastDrawingX = currentDrawingX
@@ -216,7 +227,7 @@ class EditableConwayView @JvmOverloads constructor(
         val cellColumn = floor(yForClick / cellSize).toInt()
 
         // Change cell value
-        ConwayArray.changeState(cellRow, cellColumn)
+        cells.changeState(cellRow, cellColumn)
 
         invalidate()
 

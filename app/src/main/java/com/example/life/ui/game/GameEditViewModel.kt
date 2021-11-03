@@ -4,9 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.life.ConwayArray
 import kotlinx.coroutines.launch
 
 class GameEditViewModel() : ViewModel() {
-    val cellArray = ConwayArray.cells
+    private var cells : Array<BooleanArray> = Array(256) { BooleanArray(256) }
+
+
+    private val _cellArray = MutableLiveData<Array<BooleanArray>>()
+    val cellArray: LiveData<Array<BooleanArray>> get() = _cellArray
 }
