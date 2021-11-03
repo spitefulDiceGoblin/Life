@@ -28,7 +28,7 @@ class EditableConwayView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     // contains array
-    private val cells: ConwayArray = ConwayArray()
+    val cells: ConwayArray = ConwayArray()
 
     // variables for dragging
     private var currentDrawingX = 0f

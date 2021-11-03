@@ -23,7 +23,7 @@ class FullConwayView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     // contains array
-    private val cells: ConwayArray = ConwayArray()
+    val cells: ConwayArray = ConwayArray()
 
     // variables for drawing
     // created and initialized here instead of when the view is actually drawn,
