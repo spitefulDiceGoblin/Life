@@ -1,6 +1,5 @@
 <resources>
     <declare-styleable name="ConwayView">
-        <attr name="cells" format="reference" />
         <attr name="serializedArray" format="string" />
         <attr name="exampleString" format="string" />
         <attr name="exampleDimension" format="dimension" />
