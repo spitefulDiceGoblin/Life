@@ -65,6 +65,11 @@ class FullConwayView @JvmOverloads constructor(
         drawCells(canvas)
     }
 
+    fun liveLife() {
+        ConwayArray.liveLife()
+        invalidate()
+    }
+
     // Draw alive cells
     private fun drawCells(canvas: Canvas) {
         paint.color = Color.BLACK

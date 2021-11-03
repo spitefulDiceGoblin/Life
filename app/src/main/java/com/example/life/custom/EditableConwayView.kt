@@ -30,8 +30,6 @@ class EditableConwayView @JvmOverloads constructor(
     // contains array
     //var cells: Array<BooleanArray> = Array(256) { BooleanArray(256) }
     private lateinit var cells: Array<BooleanArray>
-    var lastClickRow: Int = 0
-    var lastClickColumn: Int = 0
 
     // variables for dragging
     private var currentDrawingX = 0f

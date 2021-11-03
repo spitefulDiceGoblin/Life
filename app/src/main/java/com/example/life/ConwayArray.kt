@@ -13,6 +13,8 @@ object ConwayArray {
     private val _cells = MutableLiveData<Array<BooleanArray>>()
     val cells: LiveData<Array<BooleanArray>> get() = _cells
 
+    val toRefresh = MutableLiveData<Boolean>()
+
 
     private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
@@ -26,30 +28,6 @@ object ConwayArray {
         cellArray = Array(256) { BooleanArray(256) }
         _cells.value = cellArray
     }
-
-    // TODO replace time with value from preferences
-    fun startTimer() {
-        // executes life
-        runnable = Runnable {
-            liveLife()
-            // postDelayed re-adds the action to the queue of actions the Handler is cycling
-            // through. The delayMillis param tells the handler to run the runnable in
-            // 1 second (1000ms)
-            handler.postDelayed(runnable, 1000)
-        }
-
-        // This is what initially starts the timer
-        handler.postDelayed(runnable, 1000)
-
-        // Note that the Thread the handler runs on is determined by a class called Looper.
-    }
-
-    fun stopTimer() {
-        // Removes all pending posts of runnable from the handler's queue, effectively stopping the
-        // timer
-        handler.removeCallbacks(runnable)
-    }
-
 
     fun liveLife() {
         val north = shiftArray(cellArray, Direction.NORTH)

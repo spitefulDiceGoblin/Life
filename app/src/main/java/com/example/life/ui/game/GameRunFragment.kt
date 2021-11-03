@@ -8,19 +8,21 @@ import androidx.navigation.fragment.findNavController
 import com.example.life.ConwayArray
 import com.example.life.R
 import com.example.life.databinding.GameRunFragmentBinding
+import java.util.*
 
 // TODO fix hamburger menu not showing
 class GameRunFragment : Fragment() {
 
     private lateinit var binding: GameRunFragmentBinding
-
     private lateinit var viewModel: GameRunViewModel
+    private lateinit var timer: Timer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
+        timer = Timer(true)
 
         val view =  inflater.inflate(R.layout.game_run_fragment, container, false)
 
@@ -34,9 +36,9 @@ class GameRunFragment : Fragment() {
         binding.conwayView.setOnClickListener{
             findNavController().navigate(GameRunFragmentDirections.actionGameRunToEdit())}
 
-        viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
+         /* viewModel.refresh.observe(viewLifecycleOwner, { refresh ->
             if (refresh) binding.conwayView.invalidate()
-        })
+        }) */
 
         return view
     }
@@ -48,12 +50,21 @@ class GameRunFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        ConwayArray.startTimer()
+
+        timer.scheduleAtFixedRate(
+            object : TimerTask() {
+                override fun run() {
+                    binding.conwayView.liveLife()
+                }
+            },0, 1000
+        )
     }
 
     override fun onPause() {
         super.onPause()
-        ConwayArray.stopTimer()
+
+        timer.cancel()
+        timer.purge()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
